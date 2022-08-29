@@ -1,49 +1,49 @@
-# Noderlang - Erlang node in Node.js
+# Noderlang - nó Erlang em Node.js
 
-Noderlang allows Node.js programs to easily operate in BEAM environments,
-appearing as a normal BEAM node to other nodes.
+O Noderlang permite que os programas Node.js operem facilmente em ambientes BEAM,
+aparecendo como um nó BEAM normal para outros nós.
 
-```js
-const { Node, send, self, tuple: t } = require('noderlang');
+``` js
+const { Nó, envio, self, tupla: t } = require('noderlang');
 
-// Start a distribution node. It will be available as `js@hostname`.
-Node.start('js', async function* root() {
-  // Atoms are represented in JavaScript as Symbols.
+// Inicia um nó de distribuição. Ele estará disponível como `js@hostname`.
+Node.start('js', função assíncrona* root() {
+  // Átomos são representados em JavaScript como Símbolos.
   send([Symbol('some_process'), 'foo@bar'], t(self(), Symbol('hello!')));
 
-  Something.startLink([]);
+  Algo.startLink([]);
 
-  while (true) {
-    // `yield` is like `receive` in Erlang.
-    const message = yield;
+  enquanto (verdadeiro) {
+    // `yield` é como `receive` em Erlang.
+    const mensagem = rendimento;
 
     console.log(messagea);
   }
 });
 
-// You can also use GenServer.
-class Something extends GenServer {
-  async handleCall(value) {
-    // Return value is used as response.
-    return otherValue - 2;
+// Você também pode usar GenServer.
+class Algo estende GenServer {
+  assíncrona handleCall(valor) {
+    // O valor de retorno é usado como resposta.
+    retorne outroValor - 2;
   }
 
-  async handleCast(value) {
-    // Making calls is simple.
-    const otherValue = await GenServer.call(somePid, value + 2);
+  assíncrono handleCast(valor) {
+    // Fazer chamadas é simples.
+    const otherValue = await GenServer.call(somePid, valor + 2);
   }
 
-  async handleInfo(value) {
-    console.log('got info', value);
+  assíncrona handleInfo(valor) {
+    console.log('obteve informações', valor);
   }
 }
 ```
 
-## Current Status
+## Status atual
 
-This is currently WIP. Basic functionality like message passing and GenServer
-work, but overall stability needs to be improved.
+Atualmente, isso é WIP. Funcionalidade básica como passagem de mensagens e GenServer
+trabalho, mas a estabilidade geral precisa ser melhorada.
 
-This is greatly inspired by [Pyrlang][].
+Isso é muito inspirado por [Pyrlang][].
 
 [Pyrlang]: https://github.com/Pyrlang/Pyrlang
