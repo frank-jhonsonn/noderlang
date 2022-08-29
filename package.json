@@ -1,0 +1,12 @@
+{
+  "name": "noderlang",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {},
+  "author": "Frank",
+  "license": "MIT",
+  "dependencies": {
+    "@frank/earl": "github:frank-jhonson/earl"
+  }
+}
